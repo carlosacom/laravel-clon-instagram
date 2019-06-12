@@ -15,3 +15,5 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/configuracion', 'UserController@config')->name('config')->middleware('auth');
+Route::post('/configuration', 'UserController@update')->name('putConfig')->middleware('auth');

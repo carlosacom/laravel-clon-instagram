@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Inicio</a>  
+                                <a href="#" class="nav-link">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">Subir Imagen</a>
@@ -65,7 +65,7 @@
                                         Mi Perfil
                                     </a>
 
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{ route('config') }}" class="dropdown-item">
                                         Configuración
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
