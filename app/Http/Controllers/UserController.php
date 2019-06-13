@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -33,5 +34,10 @@ class UserController extends Controller
         }
         $user->update();
         return redirect()->route('config')->with(['message' => 'Usuario actualizado correctamente']);
+    }
+
+    public function getImage(String $image_path) {
+        $file = Storage::disk('users')->get($image_path);
+        return new Response($file,200);
     }
 }

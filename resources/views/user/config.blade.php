@@ -50,6 +50,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            @if (Auth::user()->image)
+                                <img src="{{ route('userAvatar', ['image_path' => Auth::user()->image]) }}" alt="foto de perfil" width="55" class="img-fluid">
+                            @endif
+                            <br>
                             <label for="image">Avatar</label>
                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                             @error('image')
