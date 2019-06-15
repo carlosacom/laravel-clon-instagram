@@ -1,11 +1,9 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            @include('includes.message')
-            @foreach ($images as $image)
+        <div class="col-md-10">
             <div class="card my-3 shadow">
                 <div class="card-header">
                     <div class="row">
@@ -15,13 +13,11 @@
                             @endif
                         </div>
                         <div class="col-11 d-flex align-self-center">
-                            <a href="{{ route('imagenes.show', ['id' => $image->id]) }}" class="text-decoration-none text-dark">
-                                {{ $image->user->name . ' ' . $image->user->surname }}
-                                <span class="text-secondary">
-                                    &nbsp;
-                                    {{ ' | @' . $image->user->nick }}
-                                </span>
-                            </a>
+                            {{ $image->user->name . ' ' . $image->user->surname }}
+                            <span class="text-secondary">
+                                &nbsp;
+                                {{ ' | @' . $image->user->nick }}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -50,11 +46,17 @@
                         <p class="pb-0">
                             {{ $image->description }}
                         </p>
+                        
+                        <div> 
+                            <h2>Commentarios </h2>
+                            <hr>
+                            <form action="{{-- route('comments.store') --}}#" method="POST">
+                                
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach
-            {{ $images->links() }}
         </div>
     </div>
 </div>

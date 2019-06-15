@@ -15,9 +15,11 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <!--link href="{{ asset('css/app.css') }}" rel="stylesheet"-->
+        <script src="https://kit.fontawesome.com/6cff12bb88.js"></script>
+
     </head>
     <body>
         <div id="app">
@@ -52,7 +54,7 @@
                             </li>
                             <li class="nav-item">
                                 @if (Auth::user()->image)
-                                <img src="{{ route('userAvatar', ['image_path' => Auth::user()->image]) }}" alt="foto de perfil" width="55" class="img-fluid img-thumbnail rounded-circle">
+                                <img src="{{ route('userAvatar', ['image_path' => Auth::user()->image]) }}" alt="foto de perfil" width="45" height="45" class=" rounded-circle">
                                 @endif
                             </li>
                             <li class="nav-item dropdown">

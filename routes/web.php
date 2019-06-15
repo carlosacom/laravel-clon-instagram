@@ -21,3 +21,4 @@ Route::get('/user/avatar/{image_path}', 'UserController@getImage')->name('userAv
 
 //ruta de las imagenes
 Route::resource('/imagenes', 'ImageController');
+Route::get('/image/file/{image_path}', 'ImageController@getImage')->name('imageFile');

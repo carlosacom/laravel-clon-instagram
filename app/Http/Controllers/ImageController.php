@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use Symfony\Component\HttpFoundation\Response;
 
 class ImageController extends Controller {
 
@@ -18,7 +19,7 @@ class ImageController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'description' => 'required|string|max:255',
-            'image' => 'required|image'
+            'image' => 'required|mimes:jpg,png,gif,jpeg,JPG,PNG,GIF,JPEG'
         ]);
         $image = new Image();
         $image->user_id = \Auth::user()->id;
@@ -28,7 +29,17 @@ class ImageController extends Controller {
         \Storage::disk('images')->put($image_path, \File::get($image_p));
         $image->image_path = $image_path;
         $image->save();
-        return redirect()->route('imagenes.create')->with(['message' => 'Se Publicó la imagen con éxito']);
+        return redirect()->route('home')->with(['message' => 'Se Publicó la imagen con éxito']);
+    }
+    
+    public function show(String $id) {
+        $image = Image::find($id);
+        return view('images.show', ['image' => $image]);
+    }
+
+    public function getImage(String $filename) {
+        $file = \Storage::disk('images')->get($filename);
+        return new Response($file, 200);
     }
 
 }
